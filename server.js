@@ -10,8 +10,8 @@ const io = socketIO(server);
 // Serve static frontend
 app.use(express.static(path.join(__dirname, 'public')));
 
-// Fallback to index.html
-app.get('*', (req, res) => {
+// ✅ FIXED fallback route
+app.get('/*', (req, res) => {
   res.sendFile(path.join(__dirname, 'public', 'index.html'));
 });
 
