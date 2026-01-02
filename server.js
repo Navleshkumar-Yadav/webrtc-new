@@ -7,11 +7,11 @@ const app = express();
 const server = http.createServer(app);
 const io = socketIO(server);
 
-// Serve static frontend
+// Serve static files
 app.use(express.static(path.join(__dirname, 'public')));
 
-// ✅ FIXED fallback route
-app.get('/*', (req, res) => {
+// ✅ Serve index safely
+app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, 'public', 'index.html'));
 });
 
